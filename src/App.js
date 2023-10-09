@@ -10,6 +10,11 @@ import Contact from "./components/contact/Contact"
 import Footer from "./components/common/footer/Footer"
 import Home from "./components/home/Home"
 import Placement from "./components/home/placements/placement"
+
+import RegistrationForm from "./components/facultyLogin/RegistrationForm"
+import LoginForm from "./components/facultyLogin/facultyLogin"
+
+
 function App() {
   return (
     <>
@@ -24,6 +29,9 @@ function App() {
           <Route exact path='/journal' component={Blog} />
           <Route exact path='/contact' component={Contact} />
           <Route exact path='./placements' component={Placement} />
+
+          <Route exact path='/register' component={RegistrationForm} />
+          <Route exact path='/login' component={LoginForm} />
         </Switch>
         <Footer />
       </Router>

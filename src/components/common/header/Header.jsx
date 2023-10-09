@@ -22,7 +22,7 @@ const Header = () => {
               <Link to='/about'>About</Link>
             </li>
             <li class="nav-item dropdown">
-              <Link class="nav-link dropdown-toggle" to='/team' id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <Link class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Team
               </Link>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -36,6 +36,12 @@ const Header = () => {
             </li>
             <li>
               <Link to='/contact'>Contact</Link>
+            </li>
+            <li>
+              <Link to='/admin'>Admin</Link>
+            </li>
+            <li>
+              <Link to='/pricing'>Pricing</Link>
             </li>
           </ul>
           <div className='start'>

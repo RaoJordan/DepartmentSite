@@ -1,4 +1,7 @@
 /*--------head------------*/
+.dropdown-toggle {
+  padding: 0px;
+}
 .head {
   padding: 20px 0;
   color: #fff;

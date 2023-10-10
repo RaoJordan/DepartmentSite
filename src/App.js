@@ -13,6 +13,7 @@ import Placement from "./components/home/placements/placement"
 
 import RegistrationForm from "./components/facultyLogin/RegistrationForm"
 import LoginForm from "./components/facultyLogin/facultyLogin"
+import FacultyList from "./components/facultyLogin/facultyDetails"
 
 
 import Pricing from "./components/pricing/Pricing"
@@ -35,6 +36,7 @@ function App() {
           <Route exact path='/register' component={RegistrationForm} />
           <Route exact path='/login' component={LoginForm} />
           <Route exact path='/placements' component={Placement} />
+          <Route exact path='/facultyList' component={FacultyList} />
         </Switch>
         <Footer />
       </Router>

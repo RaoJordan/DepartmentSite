@@ -12,11 +12,8 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/react-router": "^5.1.20",
-<<<<<<< HEAD
     "axios": "^1.5.1",
-=======
     "bootstrap": "^5.3.2",
->>>>>>> c4adf1cb8638690193a9f2a9b3124471d1601b1a
     "google-maps-react": "^2.0.6",
     "js-cookie": "^3.0.5",
     "material-icons": "^1.10.11",

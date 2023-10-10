@@ -10,7 +10,8 @@ import Contact from "./components/contact/Contact"
 import Footer from "./components/common/footer/Footer"
 import Home from "./components/home/Home"
 import Placement from "./components/home/placements/placement"
-import Pricing from "./components/pricing/Pricing"
+import Login from "./components/login/login"
+import Signup from "./components/login/signup"
 function App() {
   return (
     <>
@@ -19,13 +20,14 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
-          <Route exact path='/pricing' component={Pricing} />
           <Route exact path='/courses' component={CourseHome} />
           <Route exact path='/team' component={Team} />
           <Route exact path='/admin' component={Admin} />
           <Route exact path='/journal' component={Blog} />
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/placements' component={Placement} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Signup} />
         </Switch>
         <Footer />
       </Router>

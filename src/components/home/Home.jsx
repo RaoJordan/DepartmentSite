@@ -16,7 +16,6 @@ const Home = () => {
       <HAbout />
       <Testimonal />
       <Hblog />
-      {/* <Hprice /> */}
     </>
   )
 }

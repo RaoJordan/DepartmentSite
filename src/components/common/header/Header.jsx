@@ -38,10 +38,13 @@ const Header = () => {
               <Link to='/contact'>Contact</Link>
             </li>
             <li>
-              <Link to='/admin'>Admin</Link>
+              <Link to='/professorEdit'>ProfessorEdit</Link>
             </li>
             <li>
-              <Link to='/pricing'>Pricing</Link>
+              <Link to='/faculty/:id'>Personal</Link>
+            </li>
+            <li>
+              <Link to='/adminPage'>Admin Page</Link>
             </li>
           </ul>
           <div className='start'>

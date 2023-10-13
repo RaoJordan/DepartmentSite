@@ -1,3 +1,25 @@
+.link-tag {
+  color: #1eb2a6; /* Use the color of the parent element */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Style for visited links */
+.link-tag:visited {
+  color: inherit; /* Use the color of the parent element for visited links */
+}
+
+/* Style for links on hover */
+.link-tag:hover {
+  color: white;
+  text-decoration: underline; /* Add underline on hover if desired */
+}
+
+/* Style for links on focus (keyboard navigation) */
+.link-tag:focus {
+  outline: none; /* Remove the default focus outline if desired */
+  text-decoration: underline; /* Add underline on focus if desired */
+}
+
 .team .items {
   transition: 0.5s;
 }
@@ -8,7 +30,15 @@
   width: 100%;
   height: 100%;
 }
+.faculty-name{
+  color: #1eb2a6;
+}
+.faculty-name:hover{
+  color: white;
+  text-decoration: none;
+}
 .overlay {
+  
   position: absolute;
   bottom: 0;
   z-index: 11;

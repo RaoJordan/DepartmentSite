@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
+// import httpClient from '../../httpClient';
 import "./InputForm.css"
-import axios from 'axios';
 import LoadingIndicator from '../common/LoadingIndicator';
+// import { useAuth } from '../../contexts/AuthContext';
 import "./Form.css";
+// import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import config from '../../config';
 
 export default function InputForm({ toast }) {
@@ -24,11 +27,12 @@ export default function InputForm({ toast }) {
 	const sigPadRef = useRef();
 	const formRef = useRef()
 
-	const handleInputChange = async (e) => {
-		return
-	};
+	// const handleInputChange = async (e) => {
+	// 	return
+	// };
 
 	const handleFileInputChange = (e) => {
+		e.preventDefault();
 		const file = e.target.files[0];
 		const fileSize = file.size;
 		setDocument(file)
@@ -64,21 +68,19 @@ export default function InputForm({ toast }) {
 
 			// return;
 			form_data['form_filename'] = fileName;
-
-
 			console.log(form_data, document);
+			// return;
 
 			await axios.post(backendUrl + 'faculty/updateFacultyDetails', {
 				name: form_data.form_name,
 				email: form_data.form_email,
 				phoneNo: form_data.form_phone,
 				designation: form_data.form_designation,
-				researchInterest: form_data.form_purpose,
-				infoForProspectiveStudents: form_data.form_altArrangements,
-				bio: form_data.form_address,
+				researchInterest: form_data.form_researchIntersets,
+				infoForProspectiveStudents: form_data.form_infoForProspectiveStudents,
+				bio: form_data.form_bio,
 			});
 
-			// return;
 			const form = new FormData();
 			form.append('data', JSON.stringify(form_data));
 			form.append('file', document);
@@ -88,6 +90,17 @@ export default function InputForm({ toast }) {
 		}
 	}
 
+	const [points, setPoints] = useState(['']); // Initial state with one empty input
+
+	const handleInputChange = (index, value) => {
+		const newPoints = [...points];
+		newPoints[index] = value;
+		setPoints(newPoints);
+	};
+
+	const addInput = () => {
+		setPoints([...points, '']);
+	};
 
 
 	return (
@@ -98,7 +111,7 @@ export default function InputForm({ toast }) {
 						<div class="card-body" style={{ width: "100%" }}>
 							<div className="card-title title-al" >Professor Details</div>
 							<div class="card-text">
-								<form ref={formRef} onSubmit={async (e) => { await handleSubmit(e) }}>
+								<form ref={formRef} onSubmit={async (e) => { await handleSubmit(e) }}>	
 									<div className="container content-al">
 										<div className="user-details-al">
 											<div className="input-box-al">
@@ -120,20 +133,27 @@ export default function InputForm({ toast }) {
 														</div >
 														<div className="col-al">
 															<legend htmlFor="form_designation" style={{ fontSize: "18px" }}>Designation</legend>
-															<input required type="tel" className="form-control" id="form_designation" onChange={(e) => { handleInputChange(e) }} placeholder="Designation" />
+															<input required type="text" className="form-control" id="form_designation" onChange={(e) => { handleInputChange(e) }} placeholder="Designation" />
 														</div >
 													</div >
 
 													<div className="row-al">
 														<div className="col-al">
-															<legend htmlFor="form_purpose" style={{ fontSize: "18px" }}>Research Interests </legend>
-															<textarea id="form_purpose" className="form-control" onChange={(e) => { handleInputChange(e) }}>
+															<legend htmlFor="form_department" style={{ fontSize: "18px" }}>Department</legend>
+															<input required type="text" className="form-control" id="form_department" onChange={(e) => { handleInputChange(e) }} placeholder="Power Engineering / Signal Processing and Communication ..." />
+														</div >
+													</div>
+
+													<div className="row-al">
+														<div className="col-al">
+															<legend htmlFor="form_researchIntersets" style={{ fontSize: "18px" }}>Research Interests </legend>
+															<textarea id="form_researchIntersets" className="form-control" onChange={(e) => { handleInputChange(e) }}>
 
 															</textarea>
 														</div>
 														<div className="col-al">
-															<legend htmlFor="form_altArrangements" style={{ fontSize: "18px" }}>Information for prospective students</legend>
-															<textarea id="form_altArrangements" className="form-control" onChange={(e) => { handleInputChange(e) }}>
+															<legend htmlFor="form_infoForProspectiveStudents" style={{ fontSize: "18px" }}>Information for prospective students</legend>
+															<textarea id="form_infoForProspectiveStudents" className="form-control" onChange={(e) => { handleInputChange(e) }}>
 
 															</textarea>
 														</div>
@@ -141,8 +161,31 @@ export default function InputForm({ toast }) {
 
 													<div className="row-al">
 														<div className="col-al">
-															<legend htmlFor="form_address" style={{ fontSize: "18px" }}>Bio </legend>
-															<textarea id="form_address" className="form-control" onChange={(e) => { handleInputChange(e) }}>
+															<legend style={{ fontSize: "18px" }}>Any links you want to provide </legend>
+															{points.map((point, index) => (
+																<div key={index} className="input-container">
+																	<label htmlFor={`form_link-${index}`}>Link {index + 1}</label>
+																	<input
+																		type="text"
+																		id={`form_link-${index}`}
+																		value={point}
+																		onChange={(e) => handleInputChange(index, e.target.value)}
+																		placeholder='https://scholar.google.co.in/'
+																		required
+																	/>
+																</div>
+															))}
+															<button type="button" className="btn btn-primary" style={{width:"20%", height:"3rem", display:"flex", alignItems:"center", justifyContent:"center"}} onClick={addInput}>
+																Add Link
+															</button>
+														</div>
+													</div>
+
+
+													<div className="row-al">
+														<div className="col-al">
+															<legend htmlFor="form_bio" style={{ fontSize: "18px" }}>Bio </legend>
+															<textarea id="form_bio" className="form-control" onChange={(e) => { handleInputChange(e) }}>
 
 															</textarea>
 														</div>
@@ -165,7 +208,7 @@ export default function InputForm({ toast }) {
 
 													<div className="row-al">
 														<div>
-															<button type="submit" className="btn btn-primary btn-block">{formLoading ? <LoadingIndicator color={"white"}></LoadingIndicator> : "Submit"}</button>
+															<button type="submit" className="btn btn-primary" style={{width:"100%", height:"3rem", display:"flex", alignItems:"center", justifyContent:"center"}}>{formLoading ? <LoadingIndicator color={"white"}></LoadingIndicator> : "Submit"}</button>
 														</div>
 													</div>
 												</div>

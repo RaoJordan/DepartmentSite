@@ -1,7 +1,7 @@
 import React from "react"
-import InputCard from "./InputCard"
+import InputCard from "./ProfessorInputCard"
 
-const Admin = () => {
+const ProfessorEdit = () => {
   return (
     <>
       <section>
@@ -13,4 +13,4 @@ const Admin = () => {
   )
 }
 
-export default Admin
+export default ProfessorEdit

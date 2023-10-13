@@ -79,6 +79,8 @@ export default function InputForm({ toast }) {
 				researchInterest: form_data.form_researchIntersets,
 				infoForProspectiveStudents: form_data.form_infoForProspectiveStudents,
 				bio: form_data.form_bio,
+				department: form_data.form_department,
+				links: form_data.form_link,
 			});
 
 			const form = new FormData();

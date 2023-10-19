@@ -8,6 +8,9 @@ export default function AdminForm({ toast }) {
         achievements: [], // Array to store achievements
     });
 
+    const backendUrl = config.backendUrl;
+
+
     const [formLoading, setFormLoading] = useState(false);
 
     const formRef = useRef();
@@ -46,6 +49,10 @@ export default function AdminForm({ toast }) {
                 name: achievement.name || null,
                 link: achievement.link || null,
             }));
+
+            await axios.post(backendUrl + 'faculty/updateAchievments', {
+				achievementsData
+			});
 
             // Use achievementsData in your API call or perform any other necessary action
             console.log('Achievements Data:', achievementsData);

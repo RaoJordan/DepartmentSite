@@ -21,6 +21,7 @@ import PersonalWebsite from "./components/personalwebsite/PersonalWebsite"
 // import FacultyList from "./components/facultylogin/facultydetails"
 import FacultyList from "./components/team/TeamCard"
 import AdminPage from "./components/admin/AdminEdit"
+import AdminForm from "./components/admin/AdminEdit"
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route exact path='/faculty/:id' component={PersonalWebsite} />
           <Route exact path='/facultyList' component={FacultyList} />
           <Route exact path='/adminPage' component={AdminPage} />
+          <Route exact path='/adminForm' component={AdminForm} />
         </Switch>
         <Footer />
       </Router>
